@@ -1,0 +1,159 @@
+
+/* Large or default*/
+.tracker{
+height: 269px;
+margin: 0 auto; /* Center the container */
+border-radius: 10px;
+background: rgba(98, 98, 98, 1);
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+display: flex; 
+justify-content: space-between;
+margin-top: 0.5rem;
+
+}
+.container{
+    display: flex;
+    align-items: center;
+    column-gap: 5rem;
+    padding-left: 3rem;
+}
+.sub-container{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem; /* Adjust the gap as needed */
+}
+.balance{
+    width: 355.41px;
+    height: 181px;
+    border-radius: 15px;
+    opacity: 0px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.445);
+    background: rgba(155, 155, 155, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.chart{
+    width: 181px;
+    height: 181px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: white;
+}
+.wallet{
+    margin-top: 0px;
+    width: 302px;
+    height: 34px;
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 34.47px;
+}
+.wallet span{
+    color: rgba(157, 255, 91, 1);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34.47px;
+    text-align: left;
+
+}
+.wallet-button{
+    width: 167.65px;
+    height: 38px;
+    top: 245px;
+    left: 183.88px;
+    gap: 0px;
+    opacity: 0px;
+    background: linear-gradient(90deg, #B5DC52 0%, #89E148 100%);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Ubuntu";
+    cursor: pointer;
+}
+.expense{
+    margin-top: 0px;
+    width: 302px;
+    height: 34px;
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 34.47px;
+}
+.expense span{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34.47px;
+    text-align: left;
+    color: rgba(244, 187, 74, 1);
+}
+.expense-button{
+    width: 167.65px;
+    height: 38px;
+    top: 245px;
+    left: 183.88px;
+    gap: 0px;
+    opacity: 0px;
+    background: linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Ubuntu";
+    cursor: pointer;
+
+}
+@media screen and (min-width:900px){
+    .tracker{
+        width: 1211px;
+        margin-left: 1rem !important; 
+    }
+    
+}
+@media screen and (max-width: 900px) {
+    .tracker {
+        flex-direction: column; /* Change to column layout */
+        height: auto !important;
+        max-width: 800px !important;
+        margin-left: 1rem !important; 
+      }
+    
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        row-gap: 2rem;
+      }
+    
+      .sub-container {
+        flex-direction: row
+      }
+      
+}
+
+@media screen and (max-width: 675px) {
+    .tracker {
+        flex-direction: column; /* Change to column layout */
+        height: auto !important;
+        min-width: 468px;
+        margin-left: 1rem !important; 
+      }
+    
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        row-gap: 2rem;
+      }
+    
+      .sub-container {
+        flex-direction: column
+      }
+    
+} 
+

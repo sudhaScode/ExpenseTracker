@@ -1,0 +1,13 @@
+.statistics{
+   display: grid;
+   grid-template-rows: 12rem;
+   grid-template-columns:48rem 2rem;
+   margin-bottom: 5rem;
+}
+
+@media screen and (max-width:1030px) {
+  .statistics{
+   display: flex;
+   flex-direction: column;
+}
+}
