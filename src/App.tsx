@@ -2,35 +2,62 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import LogoTitle from './components/LogoTitle'
 import Tracker from './components/tracker/Tracker';
-import Transactions from "./components/Transactions";
+import MemoizedTransactions from "./components/transactions/Transactions";
 import TopExpenses from './components/TopExpenses';
 
 // interface Transaction{
 //   name: string;
 //   date: Date;
-//   spent: number
-// }
-// interface TransactionsType{
-//   transactions: Transaction[]
-// }
+//   category: string;
+//   spent: number;
+// } 
+// type ExpenseList = Transaction[]
 
 function App() {
 
-  // const [transactions, setTrasactions] = useState<TransactionsType>()
+  const [expenseList, setExpenseList] = useState([])
+  const [onChange, setOnChange] = useState(false)
+
+  const hadChange =()=>{
+     setOnChange(prev=>!prev)
+  }
 
 useEffect(()=>{
-  localStorage.setItem("walletBalance","5000")
-  localStorage.setItem("expenses","0")
-  // const transactionsData:TransactionsType = JSON.parse(localStorage.getItem("transactions"))
-  // setTrasactions(transactionsData)
+  const wallet = localStorage.getItem("walletBalance")
+  if(!wallet){
+    const newWallet = {
+      balance: 5000,
+      expenses: 0
+    }
+    localStorage.setItem("walletBalance",`${JSON.stringify(newWallet)}`)    
+  }
+
+  const storedExpenses = localStorage.getItem("expenseList")
+  if(storedExpenses){
+
+   setExpenseList(JSON.parse(storedExpenses))
+  }
+ 
 },[])
+useEffect(()=>{
+  // console.log("::::ONCHNAGE:::")
+  const storedExpenses = localStorage.getItem("expenseList")
+  if(storedExpenses){
+   setExpenseList(JSON.parse(storedExpenses))
+  }
+ 
+},[onChange])
+
+// useEffect(()=>{
+//   console.log("Expense DEBUG:: ",expenseList)
+// },[expenseList])
 
   return (
     <>
       <LogoTitle title={"Expense Tracker"}/>
-      <Tracker/>
+      <Tracker hadChange ={hadChange }/>
       <div className='statistics'>
-        <Transactions/>
+        <MemoizedTransactions expenses={expenseList} />
         <TopExpenses/>
       </div>
     </>

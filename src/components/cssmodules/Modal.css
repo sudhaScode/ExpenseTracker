@@ -1,0 +1,209 @@
+.container{
+      width:538px;
+      height: auto;
+      border-radius: 15px;
+      background: rgba(239, 239, 239, 0.85);
+
+      
+}
+.modal-title{
+      /* width: 201px;
+      height: 34px;
+      top: 293px;
+      left: 401px;
+      gap: 0px;
+      opacity: 0px; */
+      font-family: "Ubuntu";
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 34.47px;
+      color: rgba(0, 0, 0, 1);
+      margin-left :1rem ;
+      padding-bottom: 8px;
+      
+}
+.modal-form{
+      display: flex;
+      flex-wrap: wrap;
+      /* width: 460px;
+      height: 198px; */
+      /* top: 347px;
+      left: 401px;
+      gap: 0px; */
+      gap: 1.5rem;
+      margin-left:1rem;
+}
+.form-stage{
+      display: flex;
+      column-gap: 1rem;
+}
+.modal-input{
+      width: 223px;
+      height: 51px;
+      /* top: 347px;
+      left: 401px;
+      gap: 0px; */
+      border-radius: 15px;
+      opacity: 0px;
+      font-size: 1rem;
+      font-family: "Open Sans";
+      font-weight: 400;
+      line-height: 21.79px;
+      color: rgba(145, 145, 145, 1);
+      border: none;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      padding-left: 12px;
+}
+
+.modal-submit{
+      width: 235px;
+      height: 51px;
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21.79px;
+      text-align: left;
+      background-color: rgba(244, 187, 74, 1);
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     color: rgba(255, 255, 255, 1);
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    
+}     
+.modal-submit-error{
+      width: 235px;
+      height: 51px;
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21.79px;
+      text-align: left;
+      background-color: rgba(244, 187, 74, 0.164);
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     color: rgba(255, 255, 255, 1);
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+.modal-cancel{
+      width: 112px;
+      height: 51px;
+      /* top: 494px;
+      left: 640px;
+      gap: 0px; */
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21.79px;
+      text-align: left;
+      border: none;
+      background-color: rgba(227, 227, 227, 1); 
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+.modal-cancel:hover{
+      background-color: rgba(244, 187, 74, 1);
+}
+
+
+
+.balance-modal-form{
+      display: flex;
+      /* width: 460px;
+      height: 198px; */
+      /* top: 347px;
+      left: 401px;
+      gap: 0px; */
+      gap: 1.5rem;
+      margin-left:1rem;
+}
+.balance-modal-input{
+      width: 217px;
+      height: 51px;
+      /* top: 347px;
+      left: 401px;
+      gap: 0px; */
+      border-radius: 15px;
+      opacity: 0px;
+      font-size: 1rem;
+      font-family: "Open Sans";
+      font-weight: 400;
+      line-height: 21.79px;
+      color: rgba(145, 145, 145, 1);
+      border: none;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      padding-left: 12px;
+}
+.balance-form-stage{
+      display: flex;
+      column-gap: 0.8rem;
+}
+.balance-modal-submit{
+      width: 145px;
+      height: 51px;
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21.79px;
+      text-align: left;
+      background-color: rgba(244, 187, 74, 1);
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     color: rgba(255, 255, 255, 1);
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    
+}
+.balance-modal-submit-error{
+      width: 145px;
+      height: 51px;
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21.79px;
+      text-align: left;
+      background-color: rgba(244, 187, 74, 0.164);
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     color: rgba(255, 255, 255, 1);
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.balance-modal-cancel{
+      width: 112px;
+      height: 51px;
+      /* top: 494px;
+      left: 640px;
+      gap: 0px; */
+      border-radius: 15px;
+      opacity: 0px;
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21.79px;
+      text-align: left;
+      border: none;
+      background-color: rgba(227, 227, 227, 1); 
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+      

@@ -157,3 +157,8 @@ margin-top: 0.5rem;
     
 } 
 
+.error{
+    color: red;
+    font-family: "Ubuntu";
+    font-size: 1rem;
+}
