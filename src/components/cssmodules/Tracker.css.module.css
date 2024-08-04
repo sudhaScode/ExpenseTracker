@@ -122,12 +122,13 @@
     
       .container {
         flex-direction: column;
-        align-items: flex-start;
         padding: 2rem;
+
       }
     
       .sub-container {
-        flex-direction: row
+        flex-direction: row;
+    
       }
       
 }
@@ -137,13 +138,12 @@
         flex-direction: column; /* Change to column layout */
         height: auto !important;
         min-width: 468px;
-        margin-left: 1rem !important; 
+       
       }
     
       .container {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem;
+        align-items: center;
         row-gap: 2rem;
       }
     
