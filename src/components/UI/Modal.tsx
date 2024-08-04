@@ -26,10 +26,7 @@ const Modal : React.FC<ModalProps>=({children, isOpened, handler, isFor})=>{
             // padding: '20px',
             width:"538px",
             background: 'rgba(239, 239, 239, 0.85)',
-            borderRadius: "15px",
-
-    
-            
+            borderRadius: "15px",   
         },
       };
     

@@ -37,7 +37,7 @@ const PieCharts: React.FC<ExpensesProps>=({data})=>{
                     fill="#8884d8"
                     stroke="none" 
                 >
-                    {totalExpenses.map((entry, index) => (
+                    {totalExpenses.map((__, index) => (
                         <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
