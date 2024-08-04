@@ -6,6 +6,8 @@ import Modal from "../UI/Modal";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
+import PieCharts from "./PieCharts";
+
 interface Wallet {
   balance: number;
   expenses: number;
@@ -17,30 +19,46 @@ interface ModalConstraints {
 
 interface Props {
   hadChange: ()=>void;
+  storedWallet: Wallet
 }
-const Tracker: React.FC<Props> = ({hadChange}) => {
+
+interface Expense{
+  name: string
+  value: number
+}
+type Expenses= Expense[]
+const Tracker: React.FC<Props> = ({hadChange, storedWallet}) => {
 
   const [wallet, setWallet] = useState<Wallet>({
     balance: 0,
     expenses: 0,
   });
+  const [chartData, setChartData] = useState<Expenses>()
+
   const [isModalOpened, setModalOpened] = useState<ModalConstraints>({
     isOpened: false,
     for: "none",
   });
   const balanceFormik = useFormik({
     initialValues: {
-      income: localStorage.getItem("walletBalance") || 0,
+      income: wallet.balance || 0,
     },
     validationSchema: Yup.object({
       income: Yup.number().positive().required("Enter New Income"),
     }),
     onSubmit: (formData) => {
       setModalOpened({isOpened: false,for: "none"})
-      const newIncome =
-        Number(formData.income) - Number(localStorage.getItem("expenses")) || 0;
       
-      localStorage.setItem("walletBalance", `${newIncome}`);
+        const wallet = localStorage.getItem("walletBalance")
+        if(wallet){
+          const parsedWallet = JSON.parse(wallet)
+          const newIncome = Number(formData.income) - Number(parsedWallet.expenses);
+          const newWallet = {
+            balance: newIncome,
+            expenses: parsedWallet.expenses
+          }
+          localStorage.setItem("walletBalance",`${JSON.stringify(newWallet)}`)    
+        }
       hadChange()
     },
   });
@@ -104,15 +122,69 @@ const Tracker: React.FC<Props> = ({hadChange}) => {
     // modalHander(true)
   };
 
+  /**
+   * 
+   * Preapare Data for Pie CHART
+   * create expense object with sum of category expenses and total expenses
+   */
+
+
   useEffect(() => {
-    const wallet = localStorage.getItem("walletBalance")
-    if(wallet){
-       const walletBalance = JSON.parse(wallet)
-      //  console.log(walletBalance)
-       setWallet(walletBalance);
-    }
-    
-  }, []);
+    setWallet(storedWallet);
+    const storedExpenses = localStorage.getItem("expenseList")
+      if(storedExpenses){
+        type Item ={
+          title: string;
+          date: Date;
+          category: string;
+          price: number;
+        }
+        type Items = Item[]
+         const storedData:Items = JSON.parse(storedExpenses)
+         const temp = {
+          shopping: 0,
+          food: 0,
+          entertainment:0,
+          travel: 0
+        }
+        storedData.forEach((item)=>{
+
+
+            if(item.category.toLowerCase() === "food" ){
+               temp.food += item.price
+            }
+            else if (item.category.toLowerCase() === "shopping" ){
+                     temp.shopping += item.price
+            }
+            else if (item.category.toLowerCase() === "entertainment" ){
+              temp.entertainment += item.price
+            }
+            else{
+              temp.travel += item.price
+            }
+        })
+        const constrcutData = [
+          {
+            name: "Shopping",
+            value: temp.shopping
+          },
+          {
+            name: "Entertainement",
+            value: temp.entertainment
+          },
+          {
+            name: "Food",
+            value: temp.food
+          },
+          {
+            name: "Travel",
+            value: temp.travel
+          }
+        ]
+        setChartData(constrcutData)
+      }
+
+  }, [storedWallet]);
   useEffect(() => {
     if (!isModalOpened.isOpened) {
 
@@ -156,7 +228,9 @@ const Tracker: React.FC<Props> = ({hadChange}) => {
               </button>
             </Card>
           </div>
-          <div className={styles.chart}></div>
+          <div className={styles.chart}>
+            <PieCharts data={chartData}/>
+          </div>
         </div>
       </Card>
       {isModalOpened.isOpened && (

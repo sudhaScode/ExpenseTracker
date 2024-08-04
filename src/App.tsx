@@ -13,10 +13,19 @@ import TopExpenses from './components/TopExpenses';
 // } 
 // type ExpenseList = Transaction[]
 
+interface Wallet {
+  balance: number;
+  expenses: number;
+}
+
 function App() {
 
   const [expenseList, setExpenseList] = useState([])
-  const [onChange, setOnChange] = useState(false)
+  const [onChange, setOnChange] = useState(false);
+  const [storedwallet, setStoredWallet] = useState<Wallet>({
+    balance: 0,
+    expenses: 0
+  });
 
   const hadChange =()=>{
      setOnChange(prev=>!prev)
@@ -31,6 +40,10 @@ useEffect(()=>{
     }
     localStorage.setItem("walletBalance",`${JSON.stringify(newWallet)}`)    
   }
+  else{
+    setStoredWallet(JSON.parse(wallet))
+  }
+  
 
   const storedExpenses = localStorage.getItem("expenseList")
   if(storedExpenses){
@@ -45,6 +58,11 @@ useEffect(()=>{
   if(storedExpenses){
    setExpenseList(JSON.parse(storedExpenses))
   }
+
+  const wallet = localStorage.getItem("walletBalance")
+  if(wallet){
+    setStoredWallet(JSON.parse(wallet))
+  }
  
 },[onChange])
 
@@ -55,11 +73,12 @@ useEffect(()=>{
   return (
     <>
       <LogoTitle title={"Expense Tracker"}/>
-      <Tracker hadChange ={hadChange }/>
+      <Tracker hadChange ={hadChange} storedWallet={storedwallet}/>
       <div className='statistics'>
-        <MemoizedTransactions expenses={expenseList} />
-        <TopExpenses/>
+        <MemoizedTransactions expenses={expenseList} hadChange ={hadChange }/>
+        <TopExpenses onChange={onChange}/>
       </div>
+      
     </>
   )
 }

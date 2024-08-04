@@ -1,0 +1,13 @@
+.recharts-wrapper{
+    margin: 0px !important;
+    width: 300px !important;
+    margin-left: 2rem !important;
+}
+.recharts-legend-wrapper{
+    width: 360px !important;
+    
+}
+.recharts-legend-item-text{
+    color:  #FFFFFF !important;
+    font-weight: 400 !important;
+}
