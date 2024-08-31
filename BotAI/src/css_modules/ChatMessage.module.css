@@ -1,0 +1,56 @@
+.message{
+    width: 95% !important;
+    
+    height: fit-content;
+    background: #F1EBFA;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 0.5rem 0;
+    cursor: default;
+}
+.readonly{
+    width: 95% !important;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 0.5rem 0;
+    cursor: default;
+
+}
+
+.input{
+    display: flex;
+    width:90%;
+    height:fit-content;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* word-break: break-all; This forces the text to break at any point */
+    white-space: normal; /* This allows the text to wrap to the next line */
+}
+.modal{
+    width: 700px !important;
+    height: 335px !important;
+    background-color: #ebe6f3;
+}
+
+
+.stats{
+    display: none;
+}
+.stats:hover{
+    display: block;
+}
+@media screen and (max-width: 768px) {
+    .modal{
+        width: 66vw !important;
+        height: 35vh !important;
+        background-color: #ebe6f3;
+        left:20% !important;
+        top:35% !important;
+    }
+    
+}

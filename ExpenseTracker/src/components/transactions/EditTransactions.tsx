@@ -20,7 +20,7 @@ interface Porps{
 const EditTransaction: React.FC<Porps> =({isOpen, item, modalHander})=>{
 
 
-  const expenseFormik = useFormik({
+  const expenseFormik= useFormik<item>({
     initialValues: {
       title: item.title || "",
       price: item.price || 0,
@@ -178,5 +178,6 @@ const EditTransaction: React.FC<Porps> =({isOpen, item, modalHander})=>{
     )
 }
 
+/**initial key and type */
 
 export default EditTransaction;

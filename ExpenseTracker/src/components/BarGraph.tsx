@@ -1,4 +1,4 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,  } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, /*Tooltip,*/  } from 'recharts';
 import "./cssmodules/BarGraph.css"
 import { useEffect , useState} from 'react';
 
@@ -34,8 +34,6 @@ useEffect(()=>{
           travel: 0
         }
         storedData.forEach((item)=>{
-
-
             if(item.category.toLowerCase() === "food" ){
                temp.food += item.price
             }
@@ -78,7 +76,7 @@ useEffect(()=>{
       <CartesianGrid stroke='none'  />
       <XAxis type="number" display="none" axisLine={false} tickLine={false}/>
       <YAxis  dataKey="name" type="category" axisLine={false} tickLine={false}/>
-      <Tooltip/>
+      {/* <Tooltip/> */}
       <Bar dataKey="value" fill="#8884d8"  barSize={22} radius={[0,10,10,0]} ></Bar>
     </BarChart>
   );

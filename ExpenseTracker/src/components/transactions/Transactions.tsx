@@ -25,7 +25,8 @@ interface TransactionList{
 
 interface ModalObj{
   isOpen: boolean, 
-  item:{title: string,
+  item:{
+  title: string,
   date: Date,
   category: string,
   price: number
@@ -41,7 +42,7 @@ const Transactions: React.FC<TransactionList>= ({expenses, hadChange})=>{
     category: "",
     price: 0}});
 
-
+const maxPages =3
 
 
 
@@ -79,15 +80,16 @@ const Transactions: React.FC<TransactionList>= ({expenses, hadChange})=>{
           balance: parsedStoredWallet.balance + item.price,
           expenses: parsedStoredWallet.expenses-item.price
         }
-        console.log("Updated ::: ", walletBalance);
+        // console.log("Updated ::: ", walletBalance);
         localStorage.setItem("walletBalance", `${JSON.stringify(walletBalance)}`)
       }
       hadChange()
   }
   const editHandler=(item: Transaction)=>{
     // console.log(isModalOpen, ":::track")
-    setIsModalOpen({isOpen:true, item:{title: item.title,
-      date: new Date(item.date),
+    setIsModalOpen({isOpen:true, item:{
+      title: item.title,
+      date: item.date,//new Date(item.date)
       category: item.category,
       price: item.price}})
     // hadChange()      
@@ -106,7 +108,7 @@ const Transactions: React.FC<TransactionList>= ({expenses, hadChange})=>{
     const length = expenses.length;
 
     // three times for page
-    const pagesRequired = Math.ceil(length/3)
+    const pagesRequired = Math.ceil(length/maxPages )
     // console.log("DEBUG", pagesRequired)
      const list =  new Array(pagesRequired).fill(0).map((_,i)=>i+1)
     //  console.log("Required Pages:: ", list)
@@ -115,11 +117,11 @@ const Transactions: React.FC<TransactionList>= ({expenses, hadChange})=>{
 
   useEffect(()=>{
     if(currentPage ===1){
-      const items = expenses.slice(currentPage-1, currentPage*3);
+      const items = expenses.slice(currentPage-1, currentPage*maxPages );
       setCurrentItems(items)
     }
     else{
-      const items = expenses.slice(currentPage+1, currentPage*3);
+      const items = expenses.slice(currentPage+1, currentPage*maxPages );
       setCurrentItems(items)
     }
     // console.log(items)
@@ -203,11 +205,12 @@ const Transactions: React.FC<TransactionList>= ({expenses, hadChange})=>{
               </div>}
              </div>)
           }  
+         {pages.length > 1 &&
           <div className={styles["page-navigation"]}>
-              <button className={styles["left-button"]} id="left-navigate" onClick={handlePrevButton}><img src={leftArrow} alt="left" /></button>
-              <button id = "current-page-button" className={styles["current-page-button"]}>{currentPage}</button>
-              <button className={styles["right-button"]} id="right-navigate" onClick={handleNextButton}><img src={rightArrow} alt="right"/></button>
-              </div>
+          <button className={styles["left-button"]} id="left-navigate" onClick={handlePrevButton}><img src={leftArrow} alt="left" /></button>
+          <button id = "current-page-button" className={styles["current-page-button"]}>{currentPage}</button>
+          <button className={styles["right-button"]} id="right-navigate" onClick={handleNextButton}><img src={rightArrow} alt="right"/></button>
+      </div>}
          </Card>
          {isModalOpen.isOpen && <EditTransaction isOpen={isModalOpen.isOpen} item={isModalOpen.item} modalHander={modalHander}/>}
       </div>

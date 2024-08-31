@@ -1,0 +1,11 @@
+.message{
+    width: 99% !important;  
+    height: fit-content;
+    background: linear-gradient(90deg, #BFACE2 0%, #D7C7F4 100%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 0.5rem 0;
+    cursor: default;
+}
