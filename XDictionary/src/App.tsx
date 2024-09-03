@@ -28,9 +28,10 @@ interface StateProps{
 function App() {
 
   const [dictionary, setDictionary] = useState<StateProps>({result:"",dictionary:intialState})
-  const submitHandler =(event: SyntheticEvent)=>{
+  const submitHandler =(event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault()
-      const lowerCaseInput = (event.target.input.value).toLocaleLowerCase()
+    const target = event.target as HTMLFormElement;
+    const lowerCaseInput = (target.input.value).toLocaleLowerCase();
       
       const output:DictProps[] =  dictionary?.dictionary.filter(((word)=>(word.word).toLocaleLowerCase() === lowerCaseInput))
       if(output.length){
