@@ -45,7 +45,7 @@ function App() {
     <>
      <h1>Dictionary App</h1>
      <form onSubmit={submitHandler}>
-        <input type='text' placeholder='Search for a word' required name="input"/>
+        <input type='text' placeholder='Search for a word' name="input"/>
         <button type='submit'>Search</button>
      </form>
      <h5>
