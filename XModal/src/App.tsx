@@ -8,8 +8,9 @@ function App() {
   
   const submitHandler=(event: FormEvent<HTMLFormElement>)=>{
     event.preventDefault()
-    const phoneNumber = event.target.phone.value;
-    const dob = new Date(event.target.dob.value)
+    const form = event.currentTarget;
+    const phoneNumber = form.phone.value;
+    const dob = new Date(form.dob.value)
     const todayDate = new Date()   
     if(phoneNumber.length !== 10){
       alert("Invalid phone number. Please enter a 10-digit phone number.")
@@ -24,12 +25,13 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className='App' >
      <h1>User Details Modal</h1>
      <button onClick={()=>setIsModalOpen(true)}>Open Form</button>
     {
       isModalOpen &&<>
-      <Modal onClose={()=>setIsModalOpen(false)}>
+       <div className="modal" onClick={()=>setIsModalOpen(false)}>
+            <div className="modal-content" onClick={(event)=>event.stopPropagation()}>
       <form onSubmit={(event)=>submitHandler(event)}>
             <h3>Form Details</h3>
             <label htmlFor="username">Username:</label >
@@ -42,7 +44,8 @@ function App() {
             <input required name = "dob" id ="dob" type='date'></input>
             <button id ="submit-button" type='submit' className='submit-button'>Submit</button>
           </form>
-      </Modal>
+            </div>
+        </div>
       </>
     }
     </div>

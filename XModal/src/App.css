@@ -9,13 +9,21 @@
   align-items: center;
 }
 .modal{
-   position: absolute;
+  background-color: rgba(127, 127, 127, 0.584);
+  position: absolute;
+  z-index: 9999;
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+}
+.modal-content{
+  position: absolute;
    z-index: 9999;
    background-color: white;
    border-radius: 5px;
    width: fit-content;
    height: fit-content;
-   top: 16%;  
+   top: 10%;  
    padding:1rem 3rem;
    left: 32%;
 }
@@ -38,7 +46,7 @@ form label{
 
 }
 form input{
-  height: 40px;
+  height: 35px;
   width: 350px;
   margin: 6px;
   font-size: larger;
