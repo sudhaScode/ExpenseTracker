@@ -1,7 +1,7 @@
 
 import { FormEvent, useState } from 'react'
 import './App.css'
-import Modal from './Modal'
+// import Modal from './Modal'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
