@@ -8,8 +8,9 @@ function App() {
   
   const submitHandler=(event: FormEvent<HTMLFormElement>)=>{
     event.preventDefault()
-    const phoneNumber = event.target.phone.value;
-    const dob = new Date(event.target.dob.value)
+    const form = event.currentTarget;
+    const phoneNumber = form.phone.value;
+    const dob = new Date(form.dob.value)
     const todayDate = new Date()   
     if(phoneNumber.length !== 10){
       alert("Invalid phone number. Please enter a 10-digit phone number.")
